@@ -1,5 +1,5 @@
 function doGet() {
-  var sheetName = "Anime"; // Replace with the name of your sheet
+  var sheetName = "Spotlight"; // Replace with the name of your sheet
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
 
   if (!sheet) {
