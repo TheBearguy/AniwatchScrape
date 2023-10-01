@@ -15,3 +15,19 @@ function AiringScrape(): void {
 
   // Load the HTML content with Cheerio
   const $: CheerioStatic = Cheerio.load(html);
+
+  
+  // Find elements containing anime data and extract information
+  $('.flw-item').each((index: number, element: CheerioElement) => {
+    const title: string | undefined = $(element).find('.film-name a').attr('title');
+    const imgSrc: string | undefined = $(element).find('.film-poster-img').attr('data-src');
+    const type: string = $(element).find('.fdi-item:first-child').text();
+    const time: string = $(element).find('.fdi-duration').text();
+    const description: string = $(element).find('.description').text();
+    const sub: string = $(element).find('.tick-item.tick-sub').text();
+    const dub: string = $(element).find('.tick-item.tick-dub').text();
+    const noOfEpisodes: string = $(element).find('.tick-item.tick-eps').text();
+
+    sheet.appendRow([imgSrc, title, type, time, sub, dub, noOfEpisodes, description]);
+  });
+}
